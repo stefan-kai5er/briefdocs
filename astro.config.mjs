@@ -7,12 +7,12 @@ import starlightSidebarTopics from "starlight-sidebar-topics";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "My Docs",
+      title: "Briefdocs",
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/withastro/starlight",
+          href: "https://github.com/stefan-kai5er",
         },
       ],
       plugins: [
