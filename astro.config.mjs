@@ -24,8 +24,8 @@ export default defineConfig({
       plugins: [
         starlightSidebarTopics([
           {
-            label: "Guides",
-            link: "/guides/example",
+            label: "3D-Druck",
+            link: "/3d-druck/",
             icon: "open-book",
             items: [
               { label: "ABS", autogenerate: { directory: "3D-Druck/ABS" } },
