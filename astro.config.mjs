@@ -8,6 +8,12 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Briefdocs",
+      locales: {
+        root: {
+          label: "Deutsch",
+          lang: "de",
+        },
+      },
       social: [
         {
           icon: "github",
@@ -22,7 +28,8 @@ export default defineConfig({
             link: "/guides/example",
             icon: "open-book",
             items: [
-              { label: "Reference", autogenerate: { directory: "guides" } },
+              { label: "ABS", autogenerate: { directory: "3D-Druck/ABS" } },
+              { slug: "3d-druck/gewinde" },
             ],
           },
           {
