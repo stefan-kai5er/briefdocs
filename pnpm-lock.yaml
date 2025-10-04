@@ -17,6 +17,9 @@ importers:
       sharp:
         specifier: ^0.34.2
         version: 0.34.3
+      starlight-markdown-blocks:
+        specifier: ^0.1.0
+        version: 0.1.0(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.5.0)(rollup@4.50.2)(typescript@5.9.2)))
       starlight-sidebar-topics:
         specifier: ^0.6.0
         version: 0.6.0(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.5.0)(rollup@4.50.2)(typescript@5.9.2)))
@@ -1896,6 +1899,12 @@ packages:
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
+
+  starlight-markdown-blocks@0.1.0:
+    resolution: {integrity: sha512-nPnT/eMNIysR+TZGDzNEf9U0NnED+wPgtuPQaoAwrvoyOoNvAPQtvwDTYw3YzoHL0scEaOIh3J0S04cTZ1qk2w==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32'
 
   starlight-sidebar-topics@0.6.0:
     resolution: {integrity: sha512-ysmOR7zaHYKtk18/mpW4MbEMDioR/ZBsisu9bdQrq0v9BlHWpW7gAdWlqFWO9zdv1P7l0Mo1WKd0wJ0UtqOVEQ==}
@@ -4639,6 +4648,18 @@ snapshots:
   source-map@0.7.6: {}
 
   space-separated-tokens@2.0.2: {}
+
+  starlight-markdown-blocks@0.1.0(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.5.0)(rollup@4.50.2)(typescript@5.9.2))):
+    dependencies:
+      '@astrojs/starlight': 0.36.0(astro@5.14.1(@types/node@24.5.0)(rollup@4.50.2)(typescript@5.9.2))
+      '@types/mdast': 4.0.4
+      hastscript: 9.0.1
+      mdast-util-directive: 3.1.0
+      mdast-util-to-string: 4.0.0
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   starlight-sidebar-topics@0.6.0(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.5.0)(rollup@4.50.2)(typescript@5.9.2))):
     dependencies:
