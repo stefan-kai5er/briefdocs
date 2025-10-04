@@ -36,12 +36,10 @@ export default defineConfig({
         starlightSidebarTopics([
           {
             label: "3D-Druck",
-            link: "/3d-druck/",
+            link: "/3d-printing/",
             icon: "mdi:printer-3d-nozzle-outline",
             items: [
-              //{ label: "ABS", autogenerate: { directory: "3D-Druck/ABS" } },
-              { slug: "3d-druck/gewinde" },
-              { slug: "3d-druck/passgenaue-bauteile" },
+              { label: "How-To", autogenerate: { directory: "/3d-printing/guides" } },              
             ],
           },
           {
