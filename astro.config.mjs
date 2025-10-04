@@ -3,10 +3,17 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightMarkdownBlocks, { Aside } from "starlight-markdown-blocks";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
+    icon({
+      //include: {
+      // Include only three `mdi` icons in the bundle
+      //mdi: ["account", "account-plus", "account-minus"],
+      //},
+    }),
     starlight({
       title: "Briefdocs",
       locales: {
@@ -22,12 +29,15 @@ export default defineConfig({
           href: "https://github.com/stefan-kai5er",
         },
       ],
+      components: {
+        Sidebar: "./src/components/Sidebar.astro",
+      },
       plugins: [
         starlightSidebarTopics([
           {
             label: "3D-Druck",
             link: "/3d-druck/",
-            icon: "open-book",
+            icon: "mdi:printer-3d-nozzle-outline",
             items: [
               //{ label: "ABS", autogenerate: { directory: "3D-Druck/ABS" } },
               { slug: "3d-druck/gewinde" },
@@ -37,7 +47,7 @@ export default defineConfig({
           {
             label: "Starlight",
             link: "/reference/example",
-            icon: "information",
+            icon: "mdi:information-outline",
             items: [
               { label: "Reference", autogenerate: { directory: "reference" } },
             ],
