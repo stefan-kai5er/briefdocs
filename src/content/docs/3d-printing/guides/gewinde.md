@@ -7,7 +7,7 @@ Das Verbinden von 3D-gedruckten Bauteilen ist eine grundlegende Anforderung für
 
 Dieser Leitfaden basiert auf den umfassenden Tests und Erkenntnissen aus dem [Artikel von Made with Layers (Thomas Sanladerer)](https://toms3d.org/2025/01/14/a-better-way-to-add-threads-to-your-3d-prints/) und bietet einen detaillierten Überblick über die besten Methoden, um Gewinde in Ihre Drucke zu integrieren.
 
-:::note[Kurzfassung]
+:::briefing[Briefing]
 Für die meisten Fälle ist das **selbstformende Gewinde** die beste kostenlose Option. Für maximale Haltbarkeit und wiederholte Nutzung sind **Schmelzeinsätze (Heat-Set Inserts)** ideal.
 :::
 

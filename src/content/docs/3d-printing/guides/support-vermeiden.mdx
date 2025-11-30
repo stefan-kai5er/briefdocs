@@ -3,6 +3,8 @@ title: 'Clever konstruieren, um Stützmaterial zu vermeiden'
 description: 'Techniken und Design-Tricks, um die Notwendigkeit von Stützmaterial (Supports) zu eliminieren oder dessen Entfernung massiv zu vereinfachen.'
 ---
 
+import AssemblyViewer from "../../../../components/AssemblyViewer.jsx"
+
 Im 3D-Druck ist Stützmaterial (Supports) der größte Feind von sauberen Ergebnissen. Es kostet Zeit, Material und hinterlässt hässliche Spuren.
 
 Für alle Designs, die du mit anderen teilst oder in Serie produzierst, gibt es ein noch größeres Problem: Du hast **keine Kontrolle über die Slicer-Einstellungen** des Nutzers.
@@ -21,23 +23,21 @@ Der beste Support ist der, den man nicht drucken muss.
 
 ### Der 45-Grad-Trick: Diagonale Ausrichtung
 *   **Problem:** Ein Bauteil hat Überhänge, die flacher als 45-60 Grad sind (je nach Drucker). Diese benötigen Supports.
-*   **Lösung:** Rotiere das gesamte Bauteil auf dem Druckbett so, dass problematische Überhänge in einem **45-Grad-Winkel** nach oben zeigen. Dies wandelt kritische Hänge in selbsttragende Winkel um, die der Drucker ohne Stützen bewältigt.
+*   **Lösung:** Rotiere das gesamte Bauteil auf dem Druckbett so, dass problematische Überhänge in einem **45-Grad-Winkel** nach oben zeigen. Dies wandelt den Überhang in selbsttragende Winkel um, die der Drucker ohne Stützen bewältigt.
 
-[BILDPLATZHALTER: Ein Bauteil, das einmal flach (mit problematischer Brücke) und einmal um 45 Grad gekippt (sauber gedruckt) zeigt.]
+<AssemblyViewer modelUrl={"/models/support-vermeiden/45-grad.gltf"} allowFloorClip={true} client:load/>
 
 ### Überhänge sanft abfangen
 *   **Problem:** Ein Überhang, der an einem vertikalen Element ansetzt (z.B. ein kleines Regal oder eine Querverbindung), benötigt Supports.
-*   **Lösung:** Verwandle den 90-Grad-Winkel an der Unterseite in eine **Fase (Chamfer)** oder eine kleine **Abrundung (Fillet)**. Dies verteilt den Überhang auf mehrere Schichten und macht ihn oft selbsttragend. Im besten Fall reichen 45 Grad, aber selbst eine 60-Grad-Fase ist besser als ein 90-Grad-Bruch.
+*   **Lösung:** Verwandle den 90-Grad-Winkel an der Unterseite in eine **Fase (Chamfer)** oder eine kleine **Abrundung (Fillet)**. Dies verteilt den Überhang auf mehrere Schichten und macht ihn oft selbsttragend. Im besten Fall 45 Grad, aber selbst eine 60-Grad-Fase ist besser als ein 90-Grad-Bruch.
 
-[BILDPLATZHALTER: Das "not ideal/improved"-Bild. Es zeigt links einen 90°-Überhang mit Support und rechts einen 45°-Überhang ohne Support.]
-
+<AssemblyViewer modelUrl={"/models/support-vermeiden/überhang_vergleich.gltf"} allowFloorClip={true} client:load/>
 
 ### Bauteil aufteilen
 *   **Problem:** Das Bauteil ist zu komplex, um es in einer einzigen, supportfreien Orientierung zu drucken.
 *   **Lösung:** Zerlege das Modell in mehrere Stücke. Jedes Teil kann nun in seiner optimalen, Ausrichtung gedruckt und später geklebt oder verschraubt werden (siehe **Briefdoc: Gewinde in 3D-Druckteile**). Dies führt oftmals auch zu stabileren Teilen.
 
-[BILDPLATZHALTER: Eine komplexe Halterung, die in zwei Teile zerlegt wurde, um Supports zu vermeiden.]
-
+<AssemblyViewer modelUrl={"/models/support-vermeiden/Bauteil aufteilen.gltf"} allowFloorClip={true} client:load/>
 ---
 
 ## 2. Unvermeidbare Supports optimieren
@@ -61,17 +61,17 @@ Um Frustration und Beschädigungen zu vermeiden, solltest du bei größeren Stü
 Wenn du deine Modelle online teilst, **beschrifte den Support im CAD** (z.B. mit dem Wort **"SUPPORT"**). Dies stellt sicher, dass Nutzer wissen, welches Element entfernt werden muss
 :::
 
-[BILDPLATZHALTER: Ein Vergleich der drei Support-Varianten in einem Hohlraum (fest, zerdrückbar, herausdrehbar). Dazu eine Beschriftung, die "SUPPORT" auf einem der Blöcke zeigt.]
+<AssemblyViewer modelUrl={"/models/support-vermeiden/Supporttypen.gltf"} allowFloorClip={true} client:load/>
 
 ### Der Opfer-Layer-Trick (Sacrificial Layer)
-*   **Problem:** Ein interner Überhang wird von generischen Supports unzuverlässig gestützt.
-*   **Lösung:** Konstruiere eine **0.2 mm dicke, einzelne Schicht** im CAD, die die Öffnung direkt überbrückt. Diese Schicht wird nach dem Druck einfach mit einem Messer durchstochen oder aufgebohrt.
+*   **Problem:** Ein interner Überhang wird ohne Supports unzuverlässig gedruckt.
+*   **Lösung:** Konstruiere eine **0.2 mm dicke, einzelne Schicht** im CAD, die die Öffnung direkt überbrückt. Diese Brückenschicht wird nach dem Druck einfach durchstochen oder aufgebohrt.
 
 :::note
-Diese Trick können viele Slicer auch automatisch anwenden.
+Diesen Trick können viele Slicer auch automatisch anwenden.
 :::
 
-[BILDPLATZHALTER: Querschnitt einer Senkbohrung mit einem Opfer-Layer, der den Überhang perfekt stützt.]
+<AssemblyViewer modelUrl={"/models/support-vermeiden/Opfer Layer.gltf"} allowFloorClip={true} client:load/>
 
 ---
 

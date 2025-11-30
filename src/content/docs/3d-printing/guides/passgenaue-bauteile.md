@@ -32,8 +32,6 @@ Scharfe 90-Grad-Kanten sind in der realen Welt selten und im 3D-Druck oft proble
 *   **Problem:** An scharfen vertikalen Ecken muss der Druckkopf abrupt seine Richtung ändern, was Vibrationen und "Geisterbilder" (Ringing) erzeugt.
 *   **Lösung:** Eine Abrundung ermöglicht dem Drucker eine sanfte Kurve mit konstanterer Geschwindigkeit, was zu einer glatteren Oberfläche führt.
 
-[BILDPLATZHALTER: Eine Grafik, die zwei Würfel vergleicht. Links: Ein Würfel mit einer unsauberen, abgerundeten Unterkante und sichtbarem Ringing an den vertikalen Ecken. Rechts: Der optimierte Würfel mit einer sauberen 45-Grad-Fase an der Unterkante und glatten, abgerundeten vertikalen Kanten.]
-
 ---
 
 ## 2. Perfekte Löcher für Schrauben und Stifte
@@ -54,7 +52,8 @@ In FreeCAD kann man mit dem Addon "FusedFilamentDesign" solche Geometrien  autom
 *   **Problem:** Die oberen Schichten eines horizontalen Lochs sacken ohne Stützmaterial ab.
 *   **Lösung:** Konstruieren Sie das Loch von Anfang an als Tropfenform. Die 45-Grad-Schrägen sind selbsttragend und ergeben ein sauberes, rundes Loch.
 
-[BILDPLATZHALTER: Eine zweigeteilte Abbildung. Links: Querschnitt eines vertikalen Lochs mit Tropfenform, wobei ein Pfeil auf die Ecke zeigt mit dem Text "Z-Naht hier versteckt". Rechts: Querschnitt eines horizontalen Lochs, das als Tropfenform gedruckt wird.]
+![Teardrop-Horizontal](/pictures/passgenaue-bauteile/Horizontal-Holes.png)
+![Teardrop-Vertical](/pictures/passgenaue-bauteile/Teardrop-Vertical.png)
 
 ---
 
@@ -65,7 +64,6 @@ In FreeCAD kann man mit dem Addon "FusedFilamentDesign" solche Geometrien  autom
     *   **Sechseckige Löcher:** Ein runder Stift in einem sechseckigen Loch hat mehrere definierte Kontaktpunkte. Die flachen Wände dazwischen können sich leicht biegen und Toleranzen ausgleichen, ohne das Bauteil zu sprengen.
     *   **"Crush Ribs":** Fügen Sie dem Loch kleine, vorstehende Rippen hinzu. Diese Rippen verformen sich beim Einpressen gezielt und sorgen für einen festen, spielfreien Sitz. Ideal für einmalige, permanente Verbindungen.
 
-[BILDPLATZHALTER: Eine schematische Draufsicht. Ein runder Stift wird gezeigt, wie er in drei verschiedene Löcher gepresst wird: Rund (hohe Spannung), Sechseckig (biegt sich), Rund mit Crush Ribs (verformen sich).]
 
 ---
 
@@ -80,7 +78,7 @@ Manchmal ist eine höhere Genauigkeit erforderlich, als der Drucker liefern kann
     *   Verwenden Sie **Langlöcher** statt runder Löcher, um die Position eines Bauteils feinjustieren zu können.
     *   Nutzen Sie **Einstellschrauben**, um eine Position millimetergenau zu fixieren.
 
-[BILDPLATZHALTER: Ein einfaches Beispiel: Zwei Platten werden mit einer Schraube in einem Langloch verbunden, was den Verstellbereich anzeigt.]
+![Hole-Adjustment](/pictures/passgenaue-bauteile/oblong-hole-adjustment.jpg)
 
 ---
 
