@@ -293,7 +293,7 @@ export default function AssemblyViewer({
         gl={{
           antialias: true,
           toneMapping: THREE.ACESFilmicToneMapping,
-          outputEncoding: THREE.sRGBEncoding,
+          outputEncoding: THREE.SRGBColorSpace,
         }}
         camera={{ position: [0, 2, 12], fov: 50 }}
       >
