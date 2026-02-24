@@ -44,18 +44,18 @@ export default defineConfig({
       starlightSidebarTopics([
         {
           label: "3D-Druck",
-          link: "/3d-printing/",
+          link: "/3d-druck/",
           icon: "mdi:printer-3d-nozzle-outline",
           items: [
-            { label: "How-To", autogenerate: { directory: "/3d-printing/guides" } },              
+            { label: "How-To", autogenerate: { directory: "/3d-druck/how-to" } },              
           ],
         },
         {
           label: "Über Briefdocs",
-          link: "/about/styleguide",
+          link: "/ueber-briefdocs/was-ist-ein-briefdoc",
           icon: "mdi:information-outline",
           items: [
-            { label: "Was ist ein Briefdoc?", link: "/about/styleguide"},
+            { label: "Was ist ein Briefdoc?", link: "/ueber-briefdocs/was-ist-ein-briefdoc"},
           ],
         },
       ]),
