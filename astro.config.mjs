@@ -9,6 +9,13 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+
+   markdown: {
+    remarkRehype: {
+      footnoteLabel: 'Fußnoten',
+    },
+  },
+  
   integrations: [icon({
     //include: {
     // Include only three `mdi` icons in the bundle
@@ -16,6 +23,7 @@ export default defineConfig({
     //},
   }), starlight({
     title: "Briefdocs",
+    favicon: "/favicon.svg",
     locales: {
       root: {
         label: "Deutsch",
@@ -26,7 +34,7 @@ export default defineConfig({
       {
         icon: "github",
         label: "GitHub",
-        href: "https://github.com/stefan-kai5er",
+        href: "https://github.com/stefan-kai5er/briefdocs",
       },
     ],
     components: {
@@ -43,11 +51,11 @@ export default defineConfig({
           ],
         },
         {
-          label: "Starlight",
-          link: "/reference/example",
+          label: "Über Briefdocs",
+          link: "/about/styleguide",
           icon: "mdi:information-outline",
           items: [
-            { label: "Reference", autogenerate: { directory: "reference" } },
+            { label: "Was ist ein Briefdoc?", link: "/about/styleguide"},
           ],
         },
       ]),
