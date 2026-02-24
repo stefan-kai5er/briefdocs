@@ -2,25 +2,35 @@
 title: Willkommen bei Briefdocs
 template: splash
 hero:
-  tagline: Einer Sammlung von Notizen und Anleitungen
-  image:
-    file: ../../assets/houston.webp
+  tagline: Meine persönliche Wissensbasis. Eine Sammlung von Notizen, Snippets und Anleitungen – für mich dokumentiert, für alle offen.
+  # image:
+  #   file: ../../assets/dein-eigenes-logo.webp  <-- Houston ist auskommentiert. So wirkt die Seite sehr "clean". Später kannst du hier dein eigenes Bild einfügen.
   actions:
-    - text: Zu den Inhalten
+    - text: Zu meinen Notizen
       link: /3d-printing/
       icon: right-arrow
+      variant: primary
+    - text: Auf GitHub ansehen
+      link: https://github.com/stefan-kai5er/briefdocs
+      icon: external
+      variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
+## Was dich hier erwartet
 
-## So findest du dich zurecht
-
-<CardGrid stagger>
-	<Card title="Wissensbasis durchsuchen" icon="magnifier">
-		Nutze die Suchleiste oben, um schnell spezifische Informationen zu finden.
+<CardGrid>
+	<Card title="Blitzsuche" icon="magnifier">
+		Tippe einfach `Strg + K` (oder `⌘ + K`), um die gesamte Wissensbasis sofort zu durchsuchen und direkt zur Lösung zu springen.
 	</Card>
-	<Card title="Neueste Einträge" icon="document">
-		Schau dir die zuletzt hinzugefügten oder aktualisierten Seiten an.
+	<Card title="Mein externes Gehirn" icon="open-book">
+		Briefdocs ist primär mein persönliches Nachschlagewerk. Hier sammle ich Dinge, die ich gelernt habe, um sie in Zukunft schnell wiederzufinden.
+	</Card>
+	<Card title="Quellen & Respekt" icon="document">
+		Wissen baut auf anderem Wissen auf. Ich versuche stets, Originalquellen, hilfreiche Artikel und Inspirationen fair zu verlinken.
+	</Card>
+	<Card title="Open Source" icon="github">
+		Dir fällt ein Fehler auf oder du hast eine Ergänzung? Das Repo ist öffentlich. Hinweise oder Pull Requests sind gerne gesehen (aber kein Muss).
 	</Card>
 </CardGrid>
