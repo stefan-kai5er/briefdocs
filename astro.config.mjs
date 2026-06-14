@@ -9,6 +9,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://briefdocs.org",
   vite: {
     build: {
       chunkSizeWarningLimit: 1500,
@@ -22,10 +23,9 @@ export default defineConfig({
 
   integrations: [
     icon({
-      //include: {
-      // Include only three `mdi` icons in the bundle
-      //mdi: ["account", "account-plus", "account-minus"],
-      //},
+      include: {
+        mdi: ["printer-3d-nozzle-outline", "information-outline"],
+      },
     }),
     starlight({
       title: "Briefdocs",

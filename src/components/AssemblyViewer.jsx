@@ -55,7 +55,6 @@ function Annotation({ label, position, meshesToExclude = [], disableOcclusion = 
     setIsOccluded(occluded);
   });
 
-  console.log(occlusionEnabled)
   return (
     <group ref={annotationGroupRef} position={position}>
       <Html center zIndexRange={[100, 0]}>
@@ -274,7 +273,8 @@ export default function AssemblyViewer({
         <button
           onClick={handleResetView}
           className={`reset-button ${isButtonVisible ? "visible" : ""}`}
-          title="Reset View"
+          title="Ansicht zurücksetzen"
+          aria-label="Ansicht zurücksetzen"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -293,11 +293,11 @@ export default function AssemblyViewer({
         gl={{
           antialias: true,
           toneMapping: THREE.ACESFilmicToneMapping,
-          outputEncoding: THREE.SRGBColorSpace,
+          outputColorSpace: THREE.SRGBColorSpace,
         }}
         camera={{ position: [0, 2, 12], fov: 50 }}
       >
-        <Suspense fallback={<Html center>Loading Model...</Html>}>
+        <Suspense fallback={<Html center>Modell wird geladen…</Html>}>
           <Stage
             environment="city"
             intensity={0.6}
