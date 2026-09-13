@@ -34,6 +34,8 @@ Scharfe 90-Grad-Kanten sind in der realen Welt selten und im 3D-Druck oft proble
 - **Problem:** An scharfen vertikalen Ecken muss der Druckkopf abrupt seine Richtung ändern, was Vibrationen und "Geisterbilder" (Ringing) erzeugt.
 - **Lösung:** Eine Abrundung ermöglicht dem Drucker eine sanfte Kurve mit konstanterer Geschwindigkeit, was zu einer glatteren Oberfläche führt.
 
+![Gegenüberstellung an einem Würfel: Fase an der horizontalen Unterkante, Abrundung an den vertikalen Kanten.](../../../../assets/pictures/passgenaue-bauteile/Chamfer-And-Fillet-Vertical.png)
+
 ---
 
 ## 2. Perfekte Löcher für Schrauben und Stifte
@@ -43,7 +45,7 @@ Löcher sind im FDM-Druck selten perfekt rund oder maßhaltig. Mit Tropfenformen
 #### Vertikale Löcher: Z-Naht verstecken
 
 - **Problem:** Die Z-Naht erzeugt eine kleine Beule an der Wand des Lochs, was die Passgenauigkeit stört.
-- **Lösung:** Gestalten Sie das Loch als leichte Tropfenform (Teardrop). Der Slicer platziert die Naht in der scharfen Ecke, und der runde Teil des Lochs bleibt sauber.
+- **Lösung:** Gestalte das Loch als leichte Tropfenform (Teardrop). Der Slicer platziert die Naht in der scharfen Ecke, und der runde Teil des Lochs bleibt sauber.
 
 :::note[Hinweis]
 In FreeCAD kann man mit dem Addon "FusedFilamentDesign" solche Geometrien automatisch erzeugen.
@@ -52,19 +54,19 @@ In FreeCAD kann man mit dem Addon "FusedFilamentDesign" solche Geometrien automa
 #### Horizontale Löcher: Überhänge stützen
 
 - **Problem:** Die oberen Schichten eines horizontalen Lochs sacken ohne Stützmaterial ab.
-- **Lösung:** Konstruieren Sie das Loch von Anfang an als Tropfenform. Die 45-Grad-Schrägen sind selbsttragend und ergeben ein sauberes, rundes Loch.
+- **Lösung:** Konstruiere das Loch von Anfang an als Tropfenform. Die 45-Grad-Schrägen sind selbsttragend und ergeben ein sauberes, rundes Loch.
 
-![Teardrop-Horizontal](/pictures/passgenaue-bauteile/Horizontal-Holes.png)
-![Teardrop-Vertical](/pictures/passgenaue-bauteile/Teardrop-Vertical.png)[^1]
+![Vergleich horizontaler Bohrungen: ein rundes Loch sackt an der Oberseite durch, die Tropfenform druckt sauber.](../../../../assets/pictures/passgenaue-bauteile/Horizontal-Holes.png)
+![Vertikale Bohrung als Tropfenform: die Z-Naht liegt in der scharfen Ecke, der runde Teil des Lochs bleibt makellos.](../../../../assets/pictures/passgenaue-bauteile/Teardrop-Vertical.png)[^1]
 
 ---
 
 ## 3. Presspassungen, die funktionieren
 
 - **Problem:** Ein runder Stift in einem runden Loch erzeugt hohe Spannungen und führt oft zum Aufspalten der Layer.
-- **Lösung:** Konstruieren Sie das Loch so, dass es gezielt nachgeben kann.
+- **Lösung:** Konstruiere das Loch so, dass es gezielt nachgeben kann.
   - **Sechseckige Löcher:** Ein runder Stift in einem sechseckigen Loch hat mehrere definierte Kontaktpunkte. Die flachen Wände dazwischen können sich leicht biegen und Toleranzen ausgleichen, ohne das Bauteil zu sprengen.
-  - **"Crush Ribs":** Fügen Sie dem Loch kleine, vorstehende Rippen hinzu. Diese Rippen verformen sich beim Einpressen gezielt und sorgen für einen festen, spielfreien Sitz. Ideal für einmalige, permanente Verbindungen.
+  - **"Crush Ribs":** Füge dem Loch kleine, vorstehende Rippen hinzu. Diese Rippen verformen sich beim Einpressen gezielt und sorgen für einen festen, spielfreien Sitz. Ideal für einmalige, permanente Verbindungen.
 
 ---
 
@@ -76,10 +78,10 @@ Manchmal sind kleinere Toleranzen erforderlich, als der Drucker liefern kann.
 
 - **Problem:** Bauteile müssen exakt ausgerichtet werden, aber kleine Druckungenauigkeiten verhindern dies.
 - **Lösung:**
-  - Verwenden Sie **Langlöcher** statt runder Löcher, um die Position eines Bauteils feinjustieren zu können.
-  - Nutzen Sie **Einstellschrauben**, um eine Position millimetergenau zu fixieren.
+  - Verwende **Langlöcher** statt runder Löcher, um die Position eines Bauteils feinjustieren zu können.
+  - Nutze **Einstellschrauben**, um eine Position millimetergenau zu fixieren.
 
-![Hole-Adjustment](/pictures/passgenaue-bauteile/oblong-hole-adjustment.jpg)[^1]
+![Langloch statt runder Bohrung: das verschraubte Bauteil lässt sich seitlich feinjustieren.](../../../../assets/pictures/passgenaue-bauteile/oblong-hole-adjustment.jpg)[^1]
 
 ## Fazit & Empfehlung
 
