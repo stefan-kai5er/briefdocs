@@ -1,5 +1,5 @@
 ---
-title: "Gewinde in 3D-Druckteile"
+title: "Gewinde in 3D-Druckteilen"
 description: "Ein Vergleich verschiedener Methoden, um Schraubverbindungen in 3D-Drucken zu realisieren – von selbstformenden Gewinden bis zu Schmelzeinsätzen."
 ---
 
