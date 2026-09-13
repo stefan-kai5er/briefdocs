@@ -1,0 +1,153 @@
+/*
+ * Styles fuer den 3D-Viewer (src/components/AssemblyViewer.tsx).
+ *
+ * Frueher lag das als <style>-Block in der Komponente. Da die Seite
+ * "Stuetzmaterial vermeiden" fuenf Viewer einbindet, stand derselbe
+ * CSS-Text fuenfmal im DOM.
+ *
+ * Der Container traegt die Starlight-Klasse "not-content". Damit greifen
+ * die Prosa-Styles aus @astrojs/starlight/style/markdown.css nicht in den
+ * Canvas hinein -- das ersetzt die frueheren margin-Overrides mit
+ * !important auf jedem verschachtelten div.
+ */
+
+.assembly-viewer-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+/* --- Ansicht-zuruecksetzen-Button --- */
+
+.assembly-viewer-container .reset-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(30, 30, 30, 0.85);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.assembly-viewer-container .reset-button.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.assembly-viewer-container .reset-button:hover {
+  background-color: rgba(50, 50, 50, 0.95);
+}
+
+.assembly-viewer-container .reset-button:focus-visible {
+  outline: 2px solid var(--sl-color-accent-high);
+  outline-offset: 2px;
+}
+
+.assembly-viewer-container .reset-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* --- Beschriftungen im Modell --- */
+
+.assembly-viewer-container .model-label {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: rgba(30, 30, 30, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.assembly-viewer-container .main-label {
+  background-color: rgba(20, 20, 20, 0.95);
+  font-size: 14px;
+}
+
+.assembly-viewer-container .bottom-center {
+  transform: translate(-50%, -100%);
+}
+
+/* --- Annotationen (Punkt + Linie + Label) --- */
+
+.assembly-viewer-container .annotation-container {
+  pointer-events: none;
+}
+
+.assembly-viewer-container .dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  background-color: rgb(30, 30, 30);
+  transform: translate(-50%, -50%);
+}
+
+.assembly-viewer-container .label-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translate(3px, -50%);
+}
+
+.assembly-viewer-container .line {
+  width: 40px;
+  height: 2px;
+  background-color: rgba(30, 30, 30, 0.9);
+}
+
+.assembly-viewer-container .occluded .model-label,
+.assembly-viewer-container .occluded .dot,
+.assembly-viewer-container .occluded .line {
+  opacity: 0.2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* --- Lade- und Fehlerzustand --- */
+
+.assembly-viewer-status {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  background-color: var(--sl-color-gray-6);
+  color: var(--sl-color-gray-2);
+  font-size: var(--sl-text-sm);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assembly-viewer-container .reset-button,
+  .assembly-viewer-container .occluded .model-label,
+  .assembly-viewer-container .occluded .dot,
+  .assembly-viewer-container .occluded .line {
+    transition: none;
+  }
+}
