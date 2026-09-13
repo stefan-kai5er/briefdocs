@@ -20,6 +20,10 @@ Die Website *briefdocs.org* kann verschiedene Arten von Dokumentationen beheimat
 *   **Ein Briefdoc ist zielorientiert (How-To / Reference):** Es beantwortet die Frage *"Wie löse ich ein ganz bestimmtes Problem?"* oder *"Wie war nochmal dieser eine Befehl?"*. Es ist kurz, prägnant und verzichtet auf lange Hintergrundgeschichten.
 *   **Ein Tutorial ist lernorientiert:** Ein Tutorial nimmt den Anfänger an die Hand und lehrt ein Konzept von Grund auf. Tutorials haben auf dieser Website absolut ihre Daseinsberechtigung, sie folgen aber *nicht* der strikten, komprimierten Briefdoc-Struktur.
 
+## Die Ansprache: Du
+
+Briefdocs duzt. Das Projekt ist als Notiz an mein zukünftiges Ich entstanden, und dieser Ton passt weiterhin am besten: direkt, knapp, ohne Distanz. Neue Einträge und Ergänzungen folgen der Du-Form.
+
 ## Die 5 Bausteine eines Briefdocs
 
 Um eine konsistente Qualität und Lesbarkeit zu gewährleisten, ist jedes Briefdoc (How-To) nach exakt dem gleichen Muster aufgebaut.
