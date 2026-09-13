@@ -1,0 +1,10 @@
+dist/
+.astro/
+node_modules/
+bun.lock
+public/
+assets/models-src/
+
+# Inhalte bleiben handformatiert: Prettier ruecke das schliessende ":::"
+# von Aside-Direktiven in Listen ein und wuerde die Prosa-Diffs unlesbar machen.
+src/content/

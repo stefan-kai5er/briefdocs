@@ -5,9 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "check": "astro check",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "models": "./scripts/build-models.sh",
     "deploy": "bun run build && wrangler pages deploy ./dist"
   },
   "dependencies": {
@@ -25,10 +29,16 @@
     "three": "^0.183.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@gltf-transform/cli": "^4.5.0",
     "@iconify-json/mdi": "^1.2.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.183.1",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "starlight-links-validator": "0.19.2",
+    "typescript": "^5",
     "wrangler": "^4.68.0"
   }
 }
