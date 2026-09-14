@@ -25,3 +25,39 @@ jobs:
         # Der Build enthält starlight-links-validator: tote interne
         # Links lassen den Job fehlschlagen.
         run: bun run build
+
+  deploy:
+    # Nur nach einem Merge auf master, und nur wenn der Build-Job grün ist.
+    # Pull Requests werden gebaut, aber nie veröffentlicht.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    # Zwei schnell aufeinanderfolgende Merges werden nacheinander
+    # ausgerollt, nicht gleichzeitig.
+    concurrency:
+      group: deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Starlight liest „Zuletzt aktualisiert" per git log aus jeder
+          # Datei. Ein flacher Klon gäbe allen Seiten das Datum des
+          # letzten Commits.
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Abhängigkeiten installieren
+        run: bun install --frozen-lockfile
+
+      - name: Bauen
+        run: bun run build
+
+      - name: Auf Cloudflare Pages veröffentlichen
+        # Projektname kommt aus wrangler.jsonc, die Version aus bun.lock.
+        run: bunx wrangler pages deploy ./dist --branch=master
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
