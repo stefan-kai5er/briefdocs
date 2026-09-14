@@ -22,12 +22,13 @@ Da dies in erster Linie mein persönliches Nachschlagewerk ist, gibt es keine st
 
 ### Commit-Nachrichten
 
-Briefdocs nutzt **Bereichs-Präfixe** – dieselbe Konvention wie das Git-Projekt selbst. Vorne steht, _welcher Teil_ betroffen ist, danach im Imperativ, _was_ sich ändert:
+Briefdocs nutzt **Bereichs-Präfixe** – dieselbe Konvention wie das Git-Projekt selbst. Vorne steht, _welcher Teil_ betroffen ist, danach auf **Englisch** im Imperativ, _was_ sich ändert:
 
 ```
-bereich: was sich ändert
+3d-druck: fix landing page cards link
 
-Optionaler Rumpf, der erklärt, warum – nicht, wie.
+Starlight's Card has no href prop and silently drops it, so the
+three cards on /3d-druck/ were never clickable.
 ```
 
 | Präfix                          | Bereich                                  |
@@ -42,7 +43,9 @@ Optionaler Rumpf, der erklärt, warum – nicht, wie.
 
 Kommt ein neues Themengebiet dazu, kommt einfach ein neues Präfix dazu – benannt nach dem Ordner unter `src/content/docs/`.
 
-Zwei Faustregeln: **Imperativ** in der Betreffzeile („füge hinzu", nicht „hinzugefügt"), und der Rumpf beantwortet das **Warum**. Das _Wie_ steht bereits im Diff.
+Zwei Faustregeln: **Imperativ** in der Betreffzeile („add", nicht „added" oder „adds"), und der Rumpf beantwortet das **Warum**. Das _Wie_ steht bereits im Diff.
+
+Die ausführliche Anleitung – Commits schneiden, Pull Request, Mergen und Aufräumen – steht im Briefdoc [Commits und Pull Requests](https://briefdocs.org/ueber-briefdocs/commits-und-pull-requests/).
 
 ## 🛠️ Lokale Entwicklung
 
