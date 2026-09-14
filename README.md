@@ -78,6 +78,13 @@ Das Projekt ist nun unter `http://localhost:4321` erreichbar.
 | `bun run check`  | Nur der Typcheck                                 |
 | `bun run format` | Code mit Prettier formatieren                    |
 | `bun run models` | 3D-Modelle neu komprimieren (siehe unten)        |
+| `bun run deploy` | Manuell auf Cloudflare Pages veröffentlichen     |
+
+### Veröffentlichen
+
+Jeder Merge auf `master` geht automatisch live: Sobald der CI-Build grün ist, baut GitHub Actions die Seite neu und lädt sie zu Cloudflare Pages hoch. `bun run deploy` bleibt als Notlösung, falls GitHub Actions einmal nicht verfügbar ist.
+
+Dafür braucht das Repository zwei Secrets unter _Settings → Secrets and variables → Actions_: `CLOUDFLARE_API_TOKEN` (ein API-Token mit der Berechtigung _Cloudflare Pages: Edit_) und `CLOUDFLARE_ACCOUNT_ID`.
 
 ### 3D-Modelle
 
