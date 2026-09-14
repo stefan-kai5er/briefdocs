@@ -11,5 +11,5 @@
       Siehe [Was ist ein Briefdoc?](https://briefdocs.org/ueber-briefdocs/was-ist-ein-briefdoc/).
 - [ ] Die Ansprache ist die Du-Form.
 - [ ] Die Commit-Nachrichten nutzen ein Bereichs-Präfix (`viewer:`, `3d-druck:`, …),
-      siehe [README](../README.md#commit-nachrichten).
+      siehe [README](https://github.com/stefan-kai5er/briefdocs/blob/master/README.md#commit-nachrichten).
 - [ ] `bun run build` läuft lokal durch.
