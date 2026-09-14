@@ -1,6 +1,7 @@
 ---
 title: Was ist ein Briefdoc?
 description: Das Konzept hinter Briefdocs und der Styleguide für neue Einträge.
+sidebar: { order: 1 }
 ---
 
 Ein "Briefdoc" ist mehr als nur eine einfache Notiz - es ist eine auf Effizienz getrimmte Wissens-Kapsel.
