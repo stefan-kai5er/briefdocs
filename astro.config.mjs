@@ -3,15 +3,23 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightMarkdownBlocks, { Aside } from "starlight-markdown-blocks";
+import starlightLinksValidator from "starlight-links-validator";
 import icon from "astro-icon";
 
 import react from "@astrojs/react";
 
+const SITE_URL = "https://briefdocs.org";
+const SITE_DESCRIPTION =
+  "Kurze, auf den Punkt gebrachte Notizen, Snippets und Anleitungen — vom 3D-Druck bis zur Konfiguration.";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://briefdocs.org",
+  site: SITE_URL,
   vite: {
     build: {
+      // Betrifft das three.js-Bundle des 3D-Viewers, nicht die Modelle.
+      // ~1 MB ist fuer three unvermeidbar; der Viewer laedt per
+      // client:visible erst, wenn er in den Viewport kommt.
       chunkSizeWarningLimit: 1500,
     },
   },
@@ -29,7 +37,27 @@ export default defineConfig({
     }),
     starlight({
       title: "Briefdocs",
+      description: SITE_DESCRIPTION,
       favicon: "/favicon.svg",
+      customCss: ["./src/styles/assembly-viewer.css"],
+      // Ein-Klick-Bearbeiten auf jeder Seite -- genau der Beitrags-Weg,
+      // den die README beschreibt.
+      editLink: {
+        baseUrl: "https://github.com/stefan-kai5er/briefdocs/edit/master/",
+      },
+      // Bei einer Wissensbasis muss man den Stand einer Notiz einschaetzen
+      // koennen. Das Datum kommt aus der Git-Historie.
+      lastUpdated: true,
+      head: [
+        { tag: "meta", attrs: { property: "og:type", content: "website" } },
+        { tag: "meta", attrs: { property: "og:site_name", content: "Briefdocs" } },
+        { tag: "meta", attrs: { property: "og:image", content: `${SITE_URL}/og-default.png` } },
+        { tag: "meta", attrs: { property: "og:image:width", content: "1200" } },
+        { tag: "meta", attrs: { property: "og:image:height", content: "630" } },
+        { tag: "meta", attrs: { property: "og:locale", content: "de_DE" } },
+        { tag: "meta", attrs: { name: "twitter:card", content: "summary_large_image" } },
+        { tag: "meta", attrs: { name: "twitter:image", content: `${SITE_URL}/og-default.png` } },
+      ],
       locales: {
         root: {
           label: "Deutsch",
@@ -65,8 +93,8 @@ export default defineConfig({
             icon: "mdi:information-outline",
             items: [
               {
-                label: "Was ist ein Briefdoc?",
-                link: "/ueber-briefdocs/was-ist-ein-briefdoc",
+                label: "Grundlagen",
+                autogenerate: { directory: "ueber-briefdocs" },
               },
             ],
           },
@@ -85,6 +113,7 @@ export default defineConfig({
             }),
           },
         }),
+        starlightLinksValidator(),
       ],
     }),
     react(),

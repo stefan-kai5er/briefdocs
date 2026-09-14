@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Abhängigkeiten installieren
+        run: bun install --frozen-lockfile
+
+      - name: Formatierung prüfen
+        run: bun run format:check
+
+      - name: Typen prüfen und bauen
+        # Der Build enthält starlight-links-validator: tote interne
+        # Links lassen den Job fehlschlagen.
+        run: bun run build

@@ -1,0 +1,49 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Diese Lizenz gilt für die redaktionellen Inhalte von Briefdocs:
+
+    src/content/**      Texte der Briefdocs
+    src/assets/**       Bilder und Grafiken
+    public/models/**    3D-Modelle
+    assets/models-src/** Quelldateien der 3D-Modelle
+
+Für den Quellcode des Projekts gilt stattdessen die MIT-Lizenz, siehe LICENSE.
+
+--------------------------------------------------------------------------
+
+Du darfst:
+
+  Teilen     — das Material in jedwedem Format oder Medium vervielfältigen
+               und weiterverbreiten
+  Bearbeiten — das Material remixen, verändern und darauf aufbauen,
+               und zwar für beliebige Zwecke, sogar kommerziell
+
+Unter folgenden Bedingungen:
+
+  Namensnennung — Du musst angemessene Urheber- und Rechteangaben machen,
+                  einen Link zur Lizenz beifügen und angeben, ob
+                  Änderungen vorgenommen wurden. Diese Angaben dürfen in
+                  jeder angemessenen Art und Weise gemacht werden,
+                  allerdings nicht so, dass der Eindruck entsteht, der
+                  Lizenzgeber unterstütze gerade dich oder deine Nutzung
+                  besonders.
+
+  Keine weiteren
+  Einschränkungen — Du darfst keine zusätzlichen Klauseln oder technische
+                    Verfahren einsetzen, die anderen rechtlich irgendetwas
+                    untersagen, was die Lizenz erlaubt.
+
+Der vollständige Lizenztext:
+https://creativecommons.org/licenses/by/4.0/legalcode.de
+
+Eine allgemeinverständliche Zusammenfassung:
+https://creativecommons.org/licenses/by/4.0/deed.de
+
+--------------------------------------------------------------------------
+
+Hinweis zu Drittinhalten
+
+Briefdocs fasst Erkenntnisse aus fremden Quellen in eigenen Worten
+zusammen und verlinkt die Originale. Diese Lizenz erstreckt sich
+ausschließlich auf die hier verfassten Texte und die selbst erstellten
+Grafiken und Modelle, nicht auf die verlinkten Originalquellen.

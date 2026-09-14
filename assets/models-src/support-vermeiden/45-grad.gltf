@@ -2952,7 +2952,7 @@
                 -1.435538969258854e-18,
                 1.0
             ],
-            "name": "occurrence of _ann_Kritischer UEberhang --no-occlude"
+            "name": "occurrence of _ann_Kritischer Überhang --no-occlude"
         },
         {
             "extensions": {
@@ -2964,7 +2964,7 @@
                 }
             },
             "mesh": 2,
-            "name": "_ann_Kritischer UEberhang --no-occlude"
+            "name": "_ann_Kritischer Überhang --no-occlude"
         }
     ],
     "scene": 0,
