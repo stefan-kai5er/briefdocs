@@ -3,13 +3,13 @@ title: 'Clever konstruieren, um Stützmaterial zu vermeiden'
 description: 'Techniken und Design-Tricks, um die Notwendigkeit von Stützmaterial (Supports) zu eliminieren oder dessen Entfernung massiv zu vereinfachen.'
 ---
 
-import AssemblyViewer from "../../../../components/AssemblyViewer.tsx"
+import ModelViewer from "../../../../components/ModelViewer.astro"
 
 Im 3D-Druck ist Stützmaterial (Supports) der größte Feind von sauberen Ergebnissen. Es kostet Zeit, Material und hinterlässt hässliche Spuren.
 
 Für alle Designs, die du mit anderen teilst oder in Serie produzierst, gibt es ein noch größeres Problem: Du hast **keine Kontrolle über die Slicer-Einstellungen** des Nutzers.
 
-**Die Lösung ist Design-Exzellenz.** Nur ein von Grund auf support-optimiertes CAD-Modell garantiert einen perfekten Druck für jeden, auf jeder Maschine. Dieser Briefdoc zeigt dir Techniken, basierend auf den Erkenntnissen von [Rahix](https://blog.rahix.de/design-for-3d-printing/) und [Slant 3D](https://youtu.be/_R2E8VwyNz0?si=xWK-_SMiHRrAIn2S), um dies zu erreichen.
+**Die Lösung ist Design-Exzellenz.** Nur ein von Grund auf support-optimiertes CAD-Modell garantiert einen perfekten Druck für jeden, auf jeder Maschine. Dieser Briefdoc zeigt dir Techniken, basierend auf den Erkenntnissen von [Rahix](https://blog.rahix.de/design-for-3d-printing/) und [Slant 3D](https://youtu.be/_R2E8VwyNz0), um dies zu erreichen.
 
 :::briefing[Briefing]
 *   **Priorität 1:** Supports durch clevere **Ausrichtung (45°-Regel)** oder das **Aufteilen** des Modells komplett vermeiden.
@@ -25,19 +25,32 @@ Der beste Support ist der, den man nicht drucken muss.
 *   **Problem:** Ein Bauteil hat Überhänge, die flacher als 45-60 Grad sind (je nach Drucker). Diese benötigen Supports.
 *   **Lösung:** Rotiere das gesamte Bauteil auf dem Druckbett so, dass problematische Überhänge in einem **45-Grad-Winkel** nach oben zeigen. Dies wandelt den Überhang in selbsttragende Winkel um, die der Drucker ohne Stützen bewältigt.
 
-<AssemblyViewer modelUrl={"/models/support-vermeiden/45-grad.glb"} allowFloorClip={true} client:visible/>
+<ModelViewer
+  modelUrl="/models/support-vermeiden/45-grad.glb"
+  description="3D-Modell: Ein Bauteil liegt um 45 Grad gedreht auf dem Druckbett, sodass seine Überhänge selbsttragend werden."
+  allowFloorClip
+/>
 
 ### Überhänge sanft abfangen
 *   **Problem:** Ein Überhang, der an einem vertikalen Element ansetzt (z.B. ein kleines Regal oder eine Querverbindung), benötigt Supports.
 *   **Lösung:** Verwandle den 90-Grad-Winkel an der Unterseite in eine **Fase (Chamfer)** oder eine kleine **Abrundung (Fillet)**. Dies verteilt den Überhang auf mehrere Schichten und macht ihn oft selbsttragend. Im besten Fall 45 Grad, aber selbst eine 60-Grad-Fase ist besser als ein 90-Grad-Bruch.
 
-<AssemblyViewer modelUrl={"/models/support-vermeiden/ueberhang-vergleich.glb"} allowFloorClip={true} client:visible/>
+<ModelViewer
+  modelUrl="/models/support-vermeiden/ueberhang-vergleich.glb"
+  description="3D-Modell: Vergleich von Überhängen mit scharfem 90-Grad-Winkel, mit Fase und mit Abrundung an der Unterseite."
+  allowFloorClip
+/>
 
 ### Bauteil aufteilen
 *   **Problem:** Das Bauteil ist zu komplex, um es in einer einzigen, supportfreien Orientierung zu drucken.
-*   **Lösung:** Zerlege das Modell in mehrere Stücke. Jedes Teil kann nun in seiner optimalen, Ausrichtung gedruckt und später geklebt oder verschraubt werden (siehe [Gewinde in 3D-Druckteilen](/3d-druck/how-to/gewinde/)). Dies führt oftmals auch zu stabileren Teilen.
+*   **Lösung:** Zerlege das Modell in mehrere Stücke. Jedes Teil kann nun in seiner optimalen Ausrichtung gedruckt und später geklebt oder verschraubt werden (siehe [Gewinde in 3D-Druckteilen](/3d-druck/how-to/gewinde/)). Dies führt oftmals auch zu stabileren Teilen.
 
-<AssemblyViewer modelUrl={"/models/support-vermeiden/bauteil-aufteilen.glb"} allowFloorClip={true} client:visible/>
+<ModelViewer
+  modelUrl="/models/support-vermeiden/bauteil-aufteilen.glb"
+  description="3D-Modell: Ein komplexes Bauteil, zerlegt in mehrere Einzelteile, die sich jeweils ohne Stützmaterial drucken lassen."
+  allowFloorClip
+/>
+
 ---
 
 ## 2. Unvermeidbare Supports optimieren
@@ -58,10 +71,14 @@ Um Frustration und Beschädigungen zu vermeiden, solltest du bei größeren Stü
 *   **Herausdrehbare (Twist-Out) Supports:** Bei massiveren Supports helfen **abgeschrägte oder gerundete Kanten** enorm. Sie ermöglichen es, den Block zu drehen und zu kippen, wodurch die Kanten den notwendigen Freiraum finden, um sich vom Bauteil zu lösen.
 
 :::tip
-Wenn du deine Modelle online teilst, **beschrifte den Support im CAD** (z.B. mit dem Wort **"SUPPORT"**). Dies stellt sicher, dass Nutzer wissen, welches Element entfernt werden muss
+Wenn du deine Modelle online teilst, **beschrifte den Support im CAD** (z.B. mit dem Wort **"SUPPORT"**). Dies stellt sicher, dass Nutzer wissen, welches Element entfernt werden muss.
 :::
 
-<AssemblyViewer modelUrl={"/models/support-vermeiden/supporttypen.glb"} allowFloorClip={true} client:visible/>
+<ModelViewer
+  modelUrl="/models/support-vermeiden/supporttypen.glb"
+  description="3D-Modell: Im CAD konstruierte Stützen im Vergleich – mit fester Verbindung, mit Trennspalt, zerdrückbar und herausdrehbar."
+  allowFloorClip
+/>
 
 ### Der Opfer-Layer-Trick (Sacrificial Layer)
 *   **Problem:** Ein interner Überhang wird ohne Supports unzuverlässig gedruckt.
@@ -71,7 +88,11 @@ Wenn du deine Modelle online teilst, **beschrifte den Support im CAD** (z.B. mit
 Diesen Trick können viele Slicer auch automatisch anwenden.
 :::
 
-<AssemblyViewer modelUrl={"/models/support-vermeiden/opfer-layer.glb"} allowFloorClip={true} client:visible/>
+<ModelViewer
+  modelUrl="/models/support-vermeiden/opfer-layer.glb"
+  description="3D-Modell: Eine dünne Opferschicht überbrückt eine innenliegende Öffnung und wird nach dem Druck durchstochen."
+  allowFloorClip
+/>
 
 ---
 
