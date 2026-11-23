@@ -1,13 +1,13 @@
 /*
- * Styles fuer den 3D-Viewer (src/components/AssemblyViewer.tsx).
+ * Styles für den 3D-Viewer (src/components/AssemblyViewer.tsx).
  *
- * Frueher lag das als <style>-Block in der Komponente. Da die Seite
- * "Stuetzmaterial vermeiden" fuenf Viewer einbindet, stand derselbe
- * CSS-Text fuenfmal im DOM.
+ * Früher lag das als <style>-Block in der Komponente. Da die Seite
+ * "Stützmaterial vermeiden" fünf Viewer einbindet, stand derselbe
+ * CSS-Text fünfmal im DOM.
  *
- * Der Container traegt die Starlight-Klasse "not-content". Damit greifen
+ * Der Container trägt die Starlight-Klasse "not-content". Damit greifen
  * die Prosa-Styles aus @astrojs/starlight/style/markdown.css nicht in den
- * Canvas hinein -- das ersetzt die frueheren margin-Overrides mit
+ * Canvas hinein -- das ersetzt die früheren margin-Overrides mit
  * !important auf jedem verschachtelten div.
  */
 
@@ -17,7 +17,12 @@
   height: 500px;
 }
 
-/* --- Ansicht-zuruecksetzen-Button --- */
+.assembly-viewer-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Ansicht-zurücksetzen-Button --- */
 
 .assembly-viewer-container .reset-button {
   position: absolute;

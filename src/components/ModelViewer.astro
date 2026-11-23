@@ -1,0 +1,42 @@
+---
+/**
+ * Bindet den 3D-Viewer in ein Briefdoc ein.
+ *
+ * Der Viewer selbst startet erst, wenn er sich dem Viewport nähert
+ * (client:visible) -- fünf WebGL-Canvas beim Seitenaufbau wären zu teuer.
+ * Damit ein Sprung ans Seitenende trotzdem nicht auf Downloads warten muss,
+ * lädt das Skript unten Viewer-Code und Modelle vorab, sobald der
+ * Browser Leerlauf hat.
+ */
+import AssemblyViewer, { type AssemblyViewerProps } from "./AssemblyViewer.tsx";
+
+type Props = AssemblyViewerProps;
+---
+
+<AssemblyViewer {...Astro.props} client:visible={{ rootMargin: "800px" }} />
+
+<script>
+  const modelUrls = [
+    ...new Set(
+      [...document.querySelectorAll<HTMLElement>(".assembly-viewer-container[data-model-url]")].map(
+        (element) => element.dataset.modelUrl!
+      )
+    ),
+  ];
+
+  // Wer Datensparen aktiviert hat, lädt nur, was er tatsächlich ansieht.
+  const saveData =
+    (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData ===
+    true;
+
+  if (modelUrls.length > 0 && !saveData) {
+    const preload = () => {
+      import("./AssemblyViewer.tsx")
+        .then((viewer) => viewer.preloadViewerAssets(modelUrls))
+        // Schlägt das Vorladen fehl, lädt der Viewer beim Einblenden selbst.
+        .catch(() => {});
+    };
+    if ("requestIdleCallback" in window) requestIdleCallback(preload, { timeout: 2000 });
+    else setTimeout(preload, 200);
+  }
+</script>
