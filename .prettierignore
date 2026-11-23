@@ -5,6 +5,6 @@ bun.lock
 public/
 assets/models-src/
 
-# Inhalte bleiben handformatiert: Prettier ruecke das schliessende ":::"
-# von Aside-Direktiven in Listen ein und wuerde die Prosa-Diffs unlesbar machen.
+# Inhalte bleiben handformatiert: Prettier rücke das schließende ":::"
+# von Aside-Direktiven in Listen ein und würde die Prosa-Diffs unlesbar machen.
 src/content/

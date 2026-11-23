@@ -77,6 +77,7 @@ Das Projekt ist nun unter `http://localhost:4321` erreichbar.
 | `bun run build`  | Typcheck, Build und Prüfung aller internen Links |
 | `bun run check`  | Nur der Typcheck                                 |
 | `bun run format` | Code mit Prettier formatieren                    |
+| `bun run lint`   | Code mit ESLint auf Fehler prüfen                |
 | `bun run models` | 3D-Modelle neu komprimieren (siehe unten)        |
 | `bun run deploy` | Manuell auf Cloudflare Pages veröffentlichen     |
 

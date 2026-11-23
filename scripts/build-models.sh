@@ -5,29 +5,29 @@
 # Ziel:    public/models/**/*.glb              (deployed)
 #
 # Neue Modelle kommen als .glb aus FreeCAD. .gltf wird weiterhin gelesen,
-# weil die aeltesten Quelldateien noch aus Onshape stammen und in diesem
+# weil die ältesten Quelldateien noch aus Onshape stammen und in diesem
 # Format im Repo liegen.
 #
-# Warum Meshopt und nicht Draco: drei laedt den Draco-Decoder per Default
+# Warum Meshopt und nicht Draco: drei lädt den Draco-Decoder per Default
 # von https://www.gstatic.com/ (siehe @react-three/drei core/Gltf.js).
-# Der Meshopt-Decoder ist dagegen aus three-stdlib mitgebuendelt, also
+# Der Meshopt-Decoder ist dagegen aus three-stdlib mitgebündelt, also
 # kein Request an ein fremdes CDN.
 #
 # Abgeschaltete Schritte -- alle vier sind hier nicht optional:
 #
 #   --simplify false   Die Modelle demonstrieren exakte 45-Grad-Winkel und
-#                      Fasen. Eine Dezimierung der Geometrie waere inhaltlich
-#                      falsch, nicht nur eine Qualitaetsfrage.
+#                      Fasen. Eine Dezimierung der Geometrie wäre inhaltlich
+#                      falsch, nicht nur eine Qualitätsfrage.
 #   --flatten false    Flacht den Szenengraph ab. Der Viewer braucht die
 #                      Eltern-Kind-Beziehung der "_ann_"-Nodes, um per
 #                      findChildMeshes die eigenen Meshes von der
-#                      Verdeckungspruefung auszunehmen.
-#   --join false       Verschmilzt Meshes und Nodes. Loescht dabei die
+#                      Verdeckungsprüfung auszunehmen.
+#   --join false       Verschmilzt Meshes und Nodes. Löscht dabei die
 #                      "_label_"/"_ann_"-Namen, aus denen der Viewer die
 #                      Beschriftungen liest (gemessen: 10 Nodes -> 4).
-#   --palette false    Fuehrt Materialien in Palettentexturen zusammen und
-#                      kann das Erscheinungsbild der flach eingefaerbten
-#                      CAD-Teile veraendern.
+#   --palette false    Führt Materialien in Palettentexturen zusammen und
+#                      kann das Erscheinungsbild der flach eingefärbten
+#                      CAD-Teile verändern.
 set -euo pipefail
 
 SRC_DIR="assets/models-src"
@@ -44,10 +44,10 @@ if [ ${#sources[@]} -eq 0 ]; then
   exit 1
 fi
 
-# Erst pruefen, dann schreiben. Laegen foo.glb und foo.gltf nebeneinander,
-# wuerde die zweite Datei die erste stillschweigend ueberschreiben -- und
-# eine Pruefung mitten in der Schleife haette das erste Ziel bereits
-# zerstoert, bevor sie anschlaegt.
+# Erst prüfen, dann schreiben. Lägen foo.glb und foo.gltf nebeneinander,
+# würde die zweite Datei die erste stillschweigend überschreiben -- und
+# eine Prüfung mitten in der Schleife hätte das erste Ziel bereits
+# zerstört, bevor sie anschlägt.
 declare -A seen=()
 for src in "${sources[@]}"; do
   rel="${src#"$SRC_DIR"/}"
