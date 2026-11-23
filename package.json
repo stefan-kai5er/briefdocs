@@ -11,8 +11,9 @@
     "astro": "astro",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "lint": "eslint .",
     "models": "./scripts/build-models.sh",
-    "deploy": "bun run build && wrangler pages deploy ./dist"
+    "deploy": "bun run build && wrangler pages deploy ./dist --branch=master"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -30,15 +31,20 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
     "@gltf-transform/cli": "^4.5.0",
     "@iconify-json/mdi": "^1.2.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.183.1",
+    "eslint": "^10.15.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "starlight-links-validator": "0.19.2",
-    "typescript": "^5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.2",
     "wrangler": "^4.68.0"
   }
 }
