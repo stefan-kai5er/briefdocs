@@ -5,15 +5,34 @@ on:
     branches: [master]
   pull_request:
 
+# Der Workflow liest nur den Code. Das Veröffentlichen läuft über das
+# Cloudflare-Token, nicht über das GITHUB_TOKEN.
+permissions:
+  contents: read
+
+# Ein neuer Push auf einen Pull Request bricht dessen laufenden Build ab.
+# Läufe auf master laufen immer zu Ende.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  BUN_VERSION: "1.4.4"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          bun-version: latest
+          # Starlight liest „Zuletzt aktualisiert" per git log aus jeder
+          # Datei. Ein flacher Klon gäbe allen Seiten das Datum des
+          # letzten Commits.
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
 
       - name: Abhängigkeiten installieren
         run: bun install --frozen-lockfile
@@ -21,10 +40,30 @@ jobs:
       - name: Formatierung prüfen
         run: bun run format:check
 
+      - name: Linting
+        run: bun run lint
+
+      - name: Modelle sind aktuell
+        # public/models/ wird aus assets/models-src/ erzeugt und mit
+        # eingecheckt. Schlägt fehl, wenn jemand nur eine Seite ändert.
+        run: |
+          bun run models
+          git diff --exit-code -- public/models
+
       - name: Typen prüfen und bauen
         # Der Build enthält starlight-links-validator: tote interne
         # Links lassen den Job fehlschlagen.
         run: bun run build
+
+      - name: Build für den Deploy-Job aufbewahren
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dist
+          path: dist
+          # public/_headers muss mit ins Artefakt.
+          include-hidden-files: true
+          retention-days: 1
 
   deploy:
     # Nur nach einem Merge auf master, und nur wenn der Build-Job grün ist.
@@ -38,22 +77,21 @@ jobs:
       group: deploy
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
-        with:
-          # Starlight liest „Zuletzt aktualisiert" per git log aus jeder
-          # Datei. Ein flacher Klon gäbe allen Seiten das Datum des
-          # letzten Commits.
-          fetch-depth: 0
+      # Nur für wrangler.jsonc und bun.lock -- gebaut wird hier nicht mehr.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          bun-version: latest
+          bun-version: ${{ env.BUN_VERSION }}
 
       - name: Abhängigkeiten installieren
         run: bun install --frozen-lockfile
 
-      - name: Bauen
-        run: bun run build
+      - name: Build aus dem Build-Job holen
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: dist
+          path: dist
 
       - name: Auf Cloudflare Pages veröffentlichen
         # Projektname kommt aus wrangler.jsonc, die Version aus bun.lock.
