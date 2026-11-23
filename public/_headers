@@ -1,0 +1,13 @@
+# Cache-Regeln für Cloudflare Pages.
+#
+# Ohne diese Datei liefert Pages alles mit "max-age=0, must-revalidate"
+# aus -- auch die Dateien unter /_astro/, deren Name bereits einen
+# Inhalts-Hash trägt und die sich deshalb nie ändern.
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Modelle haben keinen Hash im Namen. Ein Tag Cache, danach darf
+# der Browser die alte Datei noch zeigen, während er im Hintergrund prüft.
+/models/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

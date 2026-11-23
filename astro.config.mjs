@@ -18,7 +18,7 @@ export default defineConfig({
   vite: {
     build: {
       // Betrifft das three.js-Bundle des 3D-Viewers, nicht die Modelle.
-      // ~1 MB ist fuer three unvermeidbar; der Viewer laedt per
+      // ~1 MB ist für three unvermeidbar; der Viewer lädt per
       // client:visible erst, wenn er in den Viewport kommt.
       chunkSizeWarningLimit: 1500,
     },
@@ -45,8 +45,8 @@ export default defineConfig({
       editLink: {
         baseUrl: "https://github.com/stefan-kai5er/briefdocs/edit/master/",
       },
-      // Bei einer Wissensbasis muss man den Stand einer Notiz einschaetzen
-      // koennen. Das Datum kommt aus der Git-Historie.
+      // Bei einer Wissensbasis muss man den Stand einer Notiz einschätzen
+      // können. Das Datum kommt aus der Git-Historie.
       lastUpdated: true,
       head: [
         { tag: "meta", attrs: { property: "og:type", content: "website" } },
@@ -89,7 +89,7 @@ export default defineConfig({
           },
           {
             label: "Über Briefdocs",
-            link: "/ueber-briefdocs/was-ist-ein-briefdoc",
+            link: "/ueber-briefdocs/was-ist-ein-briefdoc/",
             icon: "mdi:information-outline",
             items: [
               {
@@ -104,7 +104,7 @@ export default defineConfig({
             briefing: Aside({
               label: "Briefing",
               color: "blue",
-              icon: '<svg viewBox="0 -960 960 960" width="24" height="24" fill="currentColor" class="starlight-aside_icon"><path d="M551-800H280v-80h351l-80 80ZM391-640H160v-80h311l-80 80ZM231-480H40v-80h271l-80 80Zm353 80L480-504 280-304l104 104 200-200Zm-47-161 104 104 199-199-104-104-199 199Zm-84-28 216 216-229 229q-24 24-56 24t-56-24l-2-2-26 26H100l126-126-2-2q-24-24-24-56t24-56l229-229Zm0 0 227-227q24-24 56-24t56 24l104 104q24 24 24 56t-24 56L669-373 453-589Z"/></svg>',
+              icon: '<svg viewBox="0 -960 960 960" width="24" height="24" fill="currentColor" class="starlight-aside__icon"><path d="M551-800H280v-80h351l-80 80ZM391-640H160v-80h311l-80 80ZM231-480H40v-80h271l-80 80Zm353 80L480-504 280-304l104 104 200-200Zm-47-161 104 104 199-199-104-104-199 199Zm-84-28 216 216-229 229q-24 24-56 24t-56-24l-2-2-26 26H100l126-126-2-2q-24-24-24-56t24-56l229-229Zm0 0 227-227q24-24 56-24t56 24l104 104q24 24 24 56t-24 56L669-373 453-589Z"/></svg>',
             }),
             success: Aside({
               label: "Erfolg",
